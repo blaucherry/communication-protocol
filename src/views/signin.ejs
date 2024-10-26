@@ -12,9 +12,30 @@
 </head>
 
 <body>
-    <%- include('partials/navigation')%>
-    <h1>Login</h1>
-    <%- include('partials/footer')%>
+    <%- include('partials/navigation') %>
+
+    <!-- Contenedor de centrado para el formulario de inicio de sesión -->
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow-lg signin-card" style="max-width: 400px;">
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
+            <form action="/signin" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn w-100" style="background-color: #b58cbb; color: white;">Ingresar</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="/signup" class="text-decoration-none" style="color: #e0c0e1;">Crear cuenta</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
 </body>
 
 </html>

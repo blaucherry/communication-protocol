@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%>></title>
+    <%- include('partials/head')%>
+</head>
+<body>
+    <%- include('partials/navigation') %>
+
+    <!-- Contenedor principal del chat -->
+    <div class="container chat-container">
+        <!-- Barra superior -->
+        <div class="chat-header d-flex justify-content-between align-items-center p-2">
+            <span>Chat</span>
+        </div>
+
+        <!-- Área de mensajes (vacía) -->
+        <div class="chat-messages p-3"></div>
+
+        <!-- Área de entrada de mensajes -->
+        <div class="chat-input d-flex align-items-center p-2">
+            <input type="text" class="form-control mx-2" placeholder="Escribe tu mensaje...">
+            <button class="btn btn-dark mx-2">Enviar</button>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
