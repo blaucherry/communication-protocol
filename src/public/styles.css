@@ -1,0 +1,67 @@
+/* Estilos para el fondo de la página */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/gradient.jpg');
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #e0c0e1; /* Color de texto predeterminado */
+}
+
+/* Aseguramos que el contenido esté centrado y en una columna */
+.container {
+    background: rgba(73, 0, 52, 0.8); /* Color de fondo con transparencia */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: rgba(73, 0, 52, 0.8) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.navbar .nav-link {
+    color: #e0c0e1 !important;
+    font-weight: bold !important;
+}
+
+.navbar-brand {
+    color: #e0c0e1 !important;
+    font-weight: bold !important;
+}
+
+.navbar-toggler {
+    background-color: #b58cbb !important;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* Estilos para el footer */
+.footer {
+    background-color: rgba(73, 0, 52, 0.8);
+    color: #e0c0e1;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    padding: 5px; /* Reducido de 20px a 10px */
+    text-align: center;
+    width: 100%; /* Ocupa todo el ancho */
+    font-size: 0.6rem; /* Tamaño de fuente más pequeño */
+}
+
+.footer p {
+    margin: 0;
+    font-weight: bold;
+    color: #e0c0e1;
+    line-height: 1.4; /* Reduce el espaciado vertical entre líneas */
+}
+
