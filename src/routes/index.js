@@ -1,9 +1,12 @@
-import { Router } from 'express'
-const router = Router()
+// routes/index.js
+import { Router } from 'express';
+import appRouter from './appRouter.js';
+import apiRouter from './apiRouter.js';
 
-router.get('/', (req, res) => res.render('', {title:'Protocolo de comunicacion'}))
-router.get('/signin', (req, res) => res.render('signin', {title: 'Login'}))
-router.get('/signup', (req, res) => res.render('signup',{title: 'Registro'}))
-router.get('/chat',(req,res)=> res.render('chat',{title: 'Chat'}) )
+const router = Router();
 
-export default router
+router.use('/', appRouter);
+
+router.use('/api', apiRouter);
+
+export default router;

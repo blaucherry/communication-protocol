@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%=title%>
-    </title>
-    <%- include('partials/head')%>
-
+    <title><%= title %></title>
+    <%- include('partials/head') %>
 </head>
-
 <body>
     <%- include('partials/navigation') %>
 
-    <!-- Contenedor de centrado para el formulario -->
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card p-4 shadow-lg register-card" style="max-width: 400px;">
-            <h2 class="text-center mb-4">Registro</h2>
-            <form action="/signin" method="POST">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+            
+            <div id="formContainer">
+                <h2 class="text-center mb-4">Registro</h2>
+                
+                <form id="signupForm" action="/signup" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Verifica Contraseña</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn w-100" style="background-color: #b58cbb; color: white;">Registrar</button>
+                </form>
+            </div>
+
+            <div id="successMessage" style="display: none;">
+                <h2 class="text-center mb-4">Inicio de Sesión Exitoso</h2>
+                <p class="text-center" style="color: white;">¡Bienvenido de nuevo! Has iniciado sesión correctamente.</p>
+                <div class="text-center mt-3">
+                    <a href="/" class="btn w-100" style="background-color: #b58cbb; color: white;">Ir a la página principal</a>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Verifica Contraseña</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                <button type="submit" class="btn w-100" style="background-color: #b58cbb; color: white;">Registrar</button>
-            </form>
+            </div>
         </div>
     </div>
 
     <%- include('partials/footer') %>
-</body>
 
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+
+                const response = await fetch('api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (error) {
+                console.error('Error during form submission:', error);
+            }
+        });
+    </script>
+</body>
 </html>
