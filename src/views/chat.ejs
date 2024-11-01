@@ -3,30 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%>></title>
-    <%- include('partials/head')%>
+    <title><%= title %></title>
+    <%- include('partials/head') %>
 </head>
 <body>
     <%- include('partials/navigation') %>
 
-    <!-- Contenedor principal del chat -->
     <div class="container chat-container">
-        <!-- Barra superior -->
-        <div class="chat-header d-flex justify-content-between align-items-center p-2">
-            <span>Chat</span>
+
+        <!-- Contacts Sidebar -->
+        <div class="contacts-sidebar">
+            <div class="contact-item">
+                <img src="https://via.placeholder.com/40" alt="User" class="rounded-circle">
+                <span class="contact-name">User 1</span>
+            </div>
+            <div class="contact-item">
+                <img src="https://via.placeholder.com/40" alt="User" class="rounded-circle">
+                <span class="contact-name">User 2</span>
+            </div>
+            <div class="contact-item">
+                <img src="https://via.placeholder.com/40" alt="User" class="rounded-circle">
+                <span class="contact-name">User 3</span>
+            </div>
         </div>
 
-        <!-- Área de mensajes (vacía) -->
-        <div class="chat-messages p-3"></div>
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <span>Chat with User 1</span>
+            </div>
 
-        <!-- Área de entrada de mensajes -->
-        <div class="chat-input d-flex align-items-center p-2">
-            <input type="text" class="form-control mx-2" placeholder="Escribe tu mensaje...">
-            <button class="btn btn-dark mx-2">Enviar</button>
+            <!-- Chat Messages -->
+            <div class="chat-messages">
+                <div class="message received">Hello, how are you?</div>
+                <div class="message sent">I’m good, thanks! What about you?</div>
+                <div class="message received">I’m great! Just working on our project.</div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="chat-input">
+                <input type="text" id="messageInput" class="form-control" placeholder="Escribe tu mensaje...">
+                <button id="sendMessageBtn" class="btn btn-dark mx-2">Enviar</button>
+            </div>
         </div>
     </div>
 
     <%- include('partials/footer') %>
-</body>
 
+    <script>
+        // JavaScript for handling message sending
+        document.getElementById('sendMessageBtn').addEventListener('click', () => {
+            const messageText = document.getElementById('messageInput').value;
+            if (messageText.trim() === '') return; // Ignore empty messages
+
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'sent');
+            messageElement.innerText = messageText;
+            document.querySelector('.chat-messages').appendChild(messageElement);
+
+            document.getElementById('messageInput').value = ''; // Clear input field
+            document.querySelector('.chat-messages').scrollTop = document.querySelector('.chat-messages').scrollHeight;
+        });
+    </script>
+</body>
 </html>
